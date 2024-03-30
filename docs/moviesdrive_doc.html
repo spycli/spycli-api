@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoviesDrive API Documentation</title>
+    <link rel="stylesheet" href="/docs/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>MoviesDrive API Documentation</h1>
+        <p>This document provides usage examples for the MoviesDrive API routes.</p>
+        
+        <h2>Routes</h2>
+
+    <h3>/moviesdrive/trending</h3>
+    <p>Fetches a list of trending movies. Optional query parameter: <code>page</code> (integer).</p>
+    <code>GET /moviesdrive/trending?page=2</code>
+
+    <h3>/moviesdrive/search</h3>
+    <p>Searches for movies based on a query string. Required query parameter: <code>query</code> (string).</p>
+    <code>GET /moviesdrive/search?query=breaking+bad</code>
+
+    <h3>/moviesdrive/detail</h3>
+    <p>Fetches details for a specific movie. Required query parameter: <code>id</code> (string).</p>
+    <code>GET /moviesdrive/detail?id=breaking-bad-season-1-5</code>
+
+    <h3>/moviesdrive/quality</h3>
+    <p>Fetches quality and content links for a movie. Required query parameter: <code>url</code> (string).</p>
+    <code>GET /moviesdrive/quality?id=13820</code>
+
+    <h3>/moviesdrive/play</h3>
+    <p>Streams a movie from a provided URL. Required query parameter: <code>url</code> (string).</p>
+    <code>GET /moviesdrive/play?id=2ejavosoirb4ihe</code>
+</body>
+</html>

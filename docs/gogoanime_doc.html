@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GogoAnime API Documentation</title>
+    <link rel="stylesheet" href="/docs/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>GogoAnime API Documentation</h1>
+        <p>This document provides usage examples for the GogoAnime API routes.</p>
+        
+        <h2>Routes</h2>
+
+        <h3>/gogoanime/trending</h3>
+        <p>Fetches a list of trending anime. No query parameters required.</p>
+        <code>GET /gogoanime/trending</code>
+
+        <h3>/gogoanime/search</h3>
+        <p>Searches for anime based on a query string. Required query parameter: <code>query</code> (string).</p>
+        <code>GET /gogoanime/search?query=One+Piece</code>
+
+        <h3>/gogoanime/detail</h3>
+        <p>Fetches details for a specific anime. Required query parameter: <code>id</code> (string).</p>
+        <code>GET /gogoanime/detail?id=one-piece</code>
+
+        <h3>/gogoanime/episode</h3>
+        <p>Fetches streaming URLs for a specific anime episode. Required query parameter: <code>id</code> (string).</p>
+        <code>GET /gogoanime/episode?id=one-piece-episode-1</code>
+
+        <h3>/gogoanime/episode/download</h3>
+        <p>Fetches the download URL for a specific anime episode. Required query parameter: <code>id</code> (string).</p>
+        <code>GET /gogoanime/episode/download?id=one-piece-episode-1</code>
+    </div>
+</body>
+</html>
