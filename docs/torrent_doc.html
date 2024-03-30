@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torrent API Documentation</title>
+    <link rel="stylesheet" href="/docs/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Torrent API Documentation</h1>
+        <p>This document provides usage examples for the Torrent API routes, including how to search across various torrent sites.</p>
+        
+        <h2>Routes</h2>
+
+        <h3>/torrent/search/all</h3>
+        <p>Performs a search across all configured torrent sites. Optional parameters: <code>query</code> (string), <code>limit</code> (integer).</p>
+        <code>GET /torrent/search/all?query=ubuntu&limit=10</code>
+
+        <h3>/torrent/search/site</h3>
+        <p>Performs a search on a specific torrent site. Required parameters: <code>query</code> (string), <code>site</code> (string). Optional parameter: <code>limit</code> (integer).</p>
+        <code>GET /torrent/search/site?query=ubuntu&site=ThePirateBay&limit=10</code>
+
+        <h2>Example Torrent Sites</h2>
+        <ul>
+            <li>1337x - Site Keyword: <a href="https://1337x.to">1337x</a></li>
+            <li>Torrent Galaxy - Site Keyword: <a href="https://torrentgalaxy.to">tgx</a></li>
+            <li>Torlock - Site Keyword: <a href="https://www.torlock.com">torlock</a></li>
+            <li>PirateBay - Site Keyword: <a href=https://thepiratebay10.org">piratebay</a></li>
+            <li>Nyaasi - Site Keyword: <a href="https://nyaa.si">nyaasi</a></li>
+            <li>Zooqle - Site Keyword: <a href="https://zooqle.com">zooqle</a></li>
+            <li>KickAss - Site Keyword: <a href="https://kickasstorrents.to">kickass</a></li>
+            <li>Bitsearch - Site Keyword: <a href="https://bitsearch.to">bitsearch</a></li>
+            <li>MagnetDL - Site Keyword: <a href="https://www.magnetdl.com">magnetdl</a></li>
+            <li>Libgen - Site Keyword: <a href="https://libgen.is">libgen</a></li>
+            <li>YTS - Site Keyword: <a href="https://yts.mx">yts</a></li>
+            <li>Limetorrent - Site Keyword: <a href="https://www.limetorrents.pro">limetorrent</a></li>
+            <li>TorrentFunk - Site Keyword: <a href="https://www.torrentfunk.com">torrentfunk</a></li>
+            <li>TGlodls - Site Keyword: <a href="https://glodls.to">glodls</a></li>
+            <li>TTorrentProject - Site Keyword: <a href="https://torrentproject2.com">torrentproject/a></li>
+            <li>KickAss - Site Keyword: <a href="https://kickasstorrents.to">kickass</a></li>
+            <li>YourBittorrent - Site Keyword: <a href="https://yourbittorrent.com">ybt</a></li>
+        </ul>
+    </div>
+</body>
+</html>
