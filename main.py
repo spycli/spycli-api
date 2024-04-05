@@ -220,7 +220,7 @@ async def consumet_log():
 #-------------------
 
 @app.route('/manga')
-async def dramacool_documentation():
+async def manga_documentation():
     return await send_from_directory('docs', 'manga_doc.html')
 
 @app.route('/manga/search')
