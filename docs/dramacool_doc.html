@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DramaCool API Documentation</title>
+    <link rel="stylesheet" href="/docs/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>DramaCool API Documentation</h1>
+        <p>This document outlines the usage and examples for the DramaCool API endpoints.</p>
+        
+        <h2>Routes</h2>
+
+        <h3>/dramacool/search</h3>
+        <p>Searches for dramas based on a query string. Returns a list of dramas that match the query.</p>
+        <p><strong>Required query parameter:</strong> <code>query</code> (string).</p>
+        <code>GET /dramacool/search?query=The%20Impossible%20Heir</code>
+
+        <h3>/dramacool/info</h3>
+        <p>Fetches detailed information for a specific drama identified by its ID.</p>
+        <p><strong>Required query parameter:</strong> <code>id</code> (string).</p>
+        <code>GET /dramacool/info?id=drama-detail/royal-loader</code>
+
+        <h3>/dramacool/streaming</h3>
+        <p>Retrieves streaming links for a drama episode, based on the episode ID, media ID, and optional server preference.</p>
+        <p><strong>Required query parameters:</strong> <code>episodeId</code> (string), <code>mediaId</code> (string).</p>
+        <p><strong>Optional query parameter:</strong> <code>server</code> (servers: "asianload", "mixdrop", "streamtape", "streamsb").</p>
+        <code>GET /dramacool/streaming?episodeId=the-impossible-heir-2024-episode-1&mediaId=drama-detail/royal-loader&server=asianload</code>
+
+    </div>
+</body>
+</html>
