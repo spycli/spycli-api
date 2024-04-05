@@ -185,10 +185,11 @@ async def dramacool_search():
 @app.route('/dramacool/info')
 async def dramacool_info():
     drama_id = request.args.get('id')
+    page_no = request.args.get('page', default=1, type=int)
     if not drama_id:
         return jsonify({"error": "Missing id parameter"}), 400
     
-    info = await asyncio.to_thread(drama_cool.get_info, drama_id)
+    info = await asyncio.to_thread(drama_cool.get_info, drama_id,page_no)
     if info is None:
         return jsonify({"error": "An error occurred while fetching info"}), 500
     return jsonify(info)
