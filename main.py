@@ -261,7 +261,7 @@ async def manga_chapters():
 #-------------------
 @app.route('/tmdb')
 async def tmdb_documentation():
-    return await send_from_directory('docs', 'moviesdrive_doc.html')
+    return await send_from_directory('docs', 'tmdb_doc.html')
 
 @app.route('/tmdb/search', methods=['GET'])
 async def tmdb_search():

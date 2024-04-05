@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMDB API Documentation</title>
+    <link rel="stylesheet" href="/docs/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>TMDB API Documentation</h1>
+        <p>This document provides an overview of the endpoints available for the TMDB API integration, allowing for searches and detailed season fetches.</p>
+        
+        <h2>Endpoints</h2>
+
+        <h3>/tmdb/search</h3>
+        <p>Performs a search across multiple types of TMDB media, including movies, TV shows, and people, based on a query string.</p>
+        <p><strong>Method:</strong> GET</p>
+        <p><strong>Required query parameter:</strong> <code>query</code> - The search string.</p>
+        <p><strong>Example request:</strong> <code>GET /tmdb/search?query=Inception</code></p>
+
+        <h3>/tmdb/fetch</h3>
+        <p>Fetches the structure of seasons and episodes for a specified TV series by its TMDB ID.</p>
+        <p><strong>Method:</strong> GET</p>
+        <p><strong>Required query parameter:</strong> <code>id</code> - The TMDB ID of the TV series.</p>
+        <p><strong>Example request:</strong> <code>GET /tmdb/fetch?id=1399</code> (Where "1399" is the TMDB ID for "Game of Thrones")</p>
+
+    </div>
+</body>
+</html>
