@@ -166,7 +166,7 @@ async def torrent_log():
 #  DRAMACOOL ROUTES
 #-------------------
 @app.route('/dramacool')
-async def torrent_documentation():
+async def dramacool_documentation():
     return await send_from_directory('docs', 'dramacool_doc.html')
 
 @app.route('/dramacool/search')
