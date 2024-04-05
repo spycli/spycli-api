@@ -4,6 +4,7 @@ from utils.source.dramacool.dramacool import DramaCoolClient
 from utils.source.moviesdrive.moviedrive import MoviesDrive
 from utils.source.torrent.torrent import TorrentClient
 from utils.source.vidsrc.vidsrc import VidSrcClient
+from utils.source.manga.manga import MangaClient    
 from utils.source.tmdb.tmdb import TMDbFetcher
 import aiofiles 
 import asyncio
@@ -13,6 +14,7 @@ app = Quart(__name__, static_folder='docs')
 gogo_anime = GogoAnimeClient()
 drama_cool = DramaCoolClient() 
 movies_drive = MoviesDrive()
+manga_client = MangaClient()
 torrent = TorrentClient()
 vidsrc = VidSrcClient()
 tmdb = TMDbFetcher()
@@ -212,7 +214,48 @@ async def consumet_log():
         return Response(content, mimetype='text/plain')
     except Exception as e:
         return Response(f"Error reading log file: {e}", status=500)
-    
+
+#-------------------
+#  MANGA ROUTES
+#-------------------
+
+@app.route('/manga')
+async def dramacool_documentation():
+    return await send_from_directory('docs', 'manga_doc.html')
+
+@app.route('/manga/search')
+async def manga_search():
+    source = request.args.get('source')
+    query = request.args.get('query')
+    if not source or not query:
+        return jsonify({"error": "Missing source or query parameter"}), 400
+    results = await asyncio.to_thread(manga_client.search, source, query)
+    if results is None:
+        return jsonify({"error": "An error occurred during the search"}), 500
+    return jsonify(results)
+
+@app.route('/manga/info')
+async def manga_info():
+    source = request.args.get('source')
+    manga_id = request.args.get('id')
+    if not source or not manga_id:
+        return jsonify({"error": "Missing source or id parameter"}), 400
+    info = await asyncio.to_thread(manga_client.get_manga_info, source, manga_id)
+    if info is None:
+        return jsonify({"error": "An error occurred while fetching info"}), 500
+    return jsonify(info)
+
+@app.route('/manga/chapters')
+async def manga_chapters():
+    source = request.args.get('source')
+    chapter_id = request.args.get('chapterId')
+    if not source or not chapter_id:
+        return jsonify({"error": "Missing source or chapterId parameter"}), 400
+    pages = await asyncio.to_thread(manga_client.get_chapter_pages, source, chapter_id)
+    if pages is None:
+        return jsonify({"error": "An error occurred while fetching chapter pages"}), 500
+    return jsonify(pages)
+
 #-------------------
 #  TMDB ROUTES
 #-------------------

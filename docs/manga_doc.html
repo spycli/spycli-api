@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MangaClient API Documentation</title>
+    <link rel="stylesheet" href="/docs/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>MangaClient API Documentation</h1>
+        <p>This document outlines the usage and examples for the MangaClient API endpoints.</p>
+
+        <h2>Routes</h2>
+
+        <h3>/manga/search</h3>
+        <p>Searches for manga based on a query string. Returns a list of manga that match the query.</p>
+        <p><strong>Required query parameters:</strong> <code>source</code> (string, available sources: mangasee123, mangareader, mangapill, mangapark, mangahere, mangadex), <code>query</code> (string).</p>
+        <code>GET /manga/search?source=mangadex&query=One%20Piece</code>
+
+        <h3>/manga/info</h3>
+        <p>Fetches detailed information for a specific manga identified by its ID.</p>
+        <p><strong>Required query parameters:</strong> <code>source</code> (string, available sources: mangasee123, mangareader, mangapill, mangapark, mangahere, mangadex), <code>id</code> (string).</p>
+        <code>GET /manga/info?source=mangadex&id=259dfd8a-f06a-4825-8fa6-a2dcd7274230</code>
+
+        <h3>/manga/chapters</h3> 
+        <p>Retrieves the pages of a specific manga chapter, based on the chapter ID.</p>
+        <p><strong>Required query parameters:</strong> <code>source</code> (string, available sources: mangasee123, mangareader, mangapill, mangapark, mangahere, mangadex), <code>chapterId</code> (string).</p>
+        <code>GET /manga/chapters?source=mangadex&chapterId=5f7891b4-f048-4516-9c75-7bcd6dbd1451</code>
+
+    </div>
+</body>
+</html>
