@@ -174,10 +174,11 @@ async def dramacool_documentation():
 @app.route('/dramacool/search')
 async def dramacool_search():
     query = request.args.get('query')
+    page_no = request.args.get('page', default=1, type=int)
     if not query:
         return jsonify({"error": "Missing query parameter"}), 400
     
-    results = await asyncio.to_thread(drama_cool.search, query)
+    results = await asyncio.to_thread(drama_cool.search, query, page_no)
     if results is None:
         return jsonify({"error": "An error occurred during the search"}), 500
     return jsonify(results)
