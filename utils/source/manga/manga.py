@@ -1,7 +1,7 @@
 import requests
 
 class MangaClient:
-    def __init__(self, base_url="https://localhost:3000"):
+    def __init__(self, base_url="http://localhost:3000"):
         self.base_url = base_url
 
     def _send_request(self, endpoint):
