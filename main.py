@@ -208,7 +208,7 @@ async def dramacool_streaming():
 
 @app.route('/consumet/log')
 async def consumet_log():
-    log_path = '/content/consumet_api.log'  # Adjust the path as needed
+    log_path = '/content/consumet_api.log'
     try:
         async with aiofiles.open(log_path, mode='r') as log_file:
             content = await log_file.read()
