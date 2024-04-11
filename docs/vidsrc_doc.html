@@ -21,6 +21,10 @@
         <p>Fetches video source information for a specific movie from VSrcMe. Required query parameter: <code>IMDB or TMDB ID</code> (string).</p>
         <code>GET /vsc/vsrcme/movie?id=297802</code>
 
+        <h3>/vsc/stream/movie</h3>
+        <p>Fetches get streams from all 4 sources in one request for a specific movie. Required query parameter: <code>IMDB or TMDB ID</code> (string).</p>
+        <code>GET /vsc/stream/movie?id=297802</code>
+
         <h3>/vsc/vidsrc/tv</h3>
         <p>Fetches video source information for a specific TV show episode. Required query parameters: <code>IMDB or TMDB ID</code> (string), <code>season</code> (string), <code>episode</code> (string).</p>
         <code>GET /vsc/vidsrc/tv?id=66732&season=1&episode=2</code>
@@ -28,6 +32,10 @@
         <h3>/vsc/vsrcme/tv</h3>
         <p>Fetches video source information for a specific TV show episode from VSrcMe. Required query parameters: <code>IMDB or TMDB ID</code> (string), <code>season</code> (string), <code>episode</code> (string).</p>
         <code>GET /vsc/vsrcme/tv?id=tt4574334&season=1&episode=2</code>
+
+        <h3>/vsc/stream/tv</h3>
+        <p>Fetches get streams from all 4 sources in one request for a specific TV show. Required query parameters: <code>IMDB or TMDB ID</code> (string), <code>season</code> (string), <code>episode</code> (string).</p>
+        <code>GET /vsc/stream/tv?id=tt4574334&season=1&episode=2</code>
     </div>
 </body>
 </html>

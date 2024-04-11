@@ -46,28 +46,24 @@ async def moviesdrive_documentation():
 @app.route('/moviesdrive/trending', methods=['GET'])
 async def moviesdrive_get_movies():
     page = request.args.get('page', default=1, type=int)
-    # Offload synchronous call to a separate thread
     movies = await asyncio.to_thread(movies_drive.get_movies, page=page)
     return jsonify(movies)
 
 @app.route('/moviesdrive/search', methods=['GET'])
 async def moviesdrive_search():
     query = request.args.get('query', default='', type=str)
-    # Offload synchronous call to a separate thread
     results = await asyncio.to_thread(movies_drive.search, query)
     return jsonify(results)
 
 @app.route('/moviesdrive/detail', methods=['GET'])
 async def moviesdrive_quality_info():
     movie_id = request.args.get('id', default='', type=str)
-    # Offload synchronous call to a separate thread
     info = await asyncio.to_thread(movies_drive.checker, movie_id)
     return jsonify(info)
 
 @app.route('/moviesdrive/quality', methods=['GET'])
 async def moviesdrive_get_stream():
     movie_id = request.args.get('id', default='', type=str)
-    # Offload synchronous call to a separate thread
     info = await asyncio.to_thread(movies_drive.fetch_content_links, movie_id)
     return jsonify(info)
 
@@ -86,35 +82,30 @@ async def gogoanime_documentation():
 
 @app.route('/gogoanime/trending', methods=['GET'])
 async def gogoanime_get_anime():
-    # Offload the synchronous function to a separate thread
     trending_anime = await asyncio.to_thread(gogo_anime.get_home)
     return jsonify(trending_anime)
 
 @app.route('/gogoanime/search', methods=['GET'])
 async def gogoanime_search():
     query = request.args.get('query', default='', type=str)
-    # Offload the synchronous function to a separate thread
     results = await asyncio.to_thread(gogo_anime.search_anime, query)
     return jsonify(results)
 
 @app.route('/gogoanime/detail', methods=['GET'])
 async def gogoanime_detail():
     anime_id = request.args.get('id', default='', type=str)
-    # Offload the synchronous function to a separate thread
     info = await asyncio.to_thread(gogo_anime.get_anime_details, anime_id)
     return jsonify(info)
 
 @app.route('/gogoanime/episode', methods=['GET'])
 async def gogoanime_episode():
     episode_id = request.args.get('id', default='', type=str)
-    # Offload the synchronous function to a separate thread
     info = await asyncio.to_thread(gogo_anime.get_episode_stream_urls, episode_id)
     return jsonify(info)
 
 @app.route('/gogoanime/episode/download', methods=['GET'])
 async def gogoanime_episode_download():
     episode_id = request.args.get('id', default='', type=str)
-    # Offload the synchronous function to a separate thread
     info = await asyncio.to_thread(gogo_anime.get_episode_download_urls, episode_id)
     return jsonify(info)
 
@@ -139,7 +130,6 @@ async def torrent_documentation():
 async def torrent_search_all():
     search_query = request.args.get('query', default='', type=str)
     limit = request.args.get('limit', default=2, type=int)
-    # Offload the synchronous function to a separate thread
     info = await asyncio.to_thread(torrent.search_all_sites, search_query, limit=limit)
     return jsonify(info)
 
@@ -150,7 +140,6 @@ async def torrent_search_site():
     site = request.args.get('site', default=None, type=str)
     if not site:
         return jsonify({"error": "The 'site' parameter is required."}), 400
-    # Offload the synchronous function to a separate thread
     info = await asyncio.to_thread(torrent.search_on_site, site, search_query, limit=limit)
     return jsonify(info)
 
@@ -270,7 +259,6 @@ async def tmdb_search():
     if not query:
         return jsonify({"error": "Missing query parameter"}), 400
     try:
-        # Offload the synchronous search operation to a separate thread
         results = await asyncio.to_thread(tmdb.search_multi, query)
         return jsonify(results)
     except Exception as e:
@@ -282,7 +270,6 @@ async def tmdb_get_seasons():
     if not media_id:
         return jsonify({"error": "Missing id parameter"}), 400
     try:
-        # Offload the synchronous get seasons operation to a separate thread
         structure = await asyncio.to_thread(tmdb.get_seasons_episode_structure, 'tv', media_id)
         return jsonify(structure)
     except Exception as e:
@@ -300,7 +287,6 @@ async def get_vidsrc_movie():
     movie_id = request.args.get('id', default=None, type=str)
     if not movie_id:
         return jsonify({"error": "Movie ID is required"}), 400
-    # Offload the synchronous function to a separate thread
     info = await asyncio.to_thread(vidsrc.get_vidsrc_source, movie_id)
     return jsonify(info)
 
@@ -309,16 +295,14 @@ async def get_vsrcme_movie():
     movie_id = request.args.get('id', default=None, type=str)
     if not movie_id:
         return jsonify({"error": "Movie ID is required"}), 400
-    # Offload the synchronous function to a separate thread
     info = await asyncio.to_thread(vidsrc.get_vsrcme_source, movie_id)
     return jsonify(info)
 
 @app.route('/vsc/stream/movie', methods=['GET'])
-async def get_vsrcme_movie():
+async def get_all_sources_movie():
     movie_id = request.args.get('id', default=None, type=str)
     if not movie_id:
         return jsonify({"error": "Movie ID is required"}), 400
-    # Offload the synchronous function to a separate thread
     info = await asyncio.to_thread(vidsrc.get_all_sources, movie_id)
     return jsonify(info)
 
@@ -343,7 +327,7 @@ async def get_vsrcme_tv():
     return jsonify(info)
 
 @app.route('/vsc/stream/tv', methods=['GET'])
-async def get_vidsrc_tv():
+async def get_all_sources_tv():
     tv_id = request.args.get('id', default=None, type=str)
     season = request.args.get('season', default=None, type=str)
     episode = request.args.get('episode', default=None, type=str)
