@@ -313,6 +313,15 @@ async def get_vsrcme_movie():
     info = await asyncio.to_thread(vidsrc.get_vsrcme_source, movie_id)
     return jsonify(info)
 
+@app.route('/vsc/stream/movie', methods=['GET'])
+async def get_vsrcme_movie():
+    movie_id = request.args.get('id', default=None, type=str)
+    if not movie_id:
+        return jsonify({"error": "Movie ID is required"}), 400
+    # Offload the synchronous function to a separate thread
+    info = await asyncio.to_thread(vidsrc.get_all_sources, movie_id)
+    return jsonify(info)
+
 @app.route('/vsc/vidsrc/tv', methods=['GET'])
 async def get_vidsrc_tv():
     tv_id = request.args.get('id', default=None, type=str)
@@ -320,7 +329,6 @@ async def get_vidsrc_tv():
     episode = request.args.get('episode', default=None, type=str)
     if not tv_id or not season or not episode:
         return jsonify({"error": "TV show ID, season, and episode are required"}), 400
-    # Offload the synchronous function to a separate thread
     info = await asyncio.to_thread(vidsrc.get_vidsrc_source, tv_id, season=season, episode=episode)
     return jsonify(info)
 
@@ -331,8 +339,17 @@ async def get_vsrcme_tv():
     episode = request.args.get('episode', default=None, type=str)
     if not tv_id or not season or not episode:
         return jsonify({"error": "TV show ID, season, and episode are required"}), 400
-    # Offload the synchronous function to a separate thread
     info = await asyncio.to_thread(vidsrc.get_vsrcme_source, tv_id, season=season, episode=episode)
+    return jsonify(info)
+
+@app.route('/vsc/stream/tv', methods=['GET'])
+async def get_vidsrc_tv():
+    tv_id = request.args.get('id', default=None, type=str)
+    season = request.args.get('season', default=None, type=str)
+    episode = request.args.get('episode', default=None, type=str)
+    if not tv_id or not season or not episode:
+        return jsonify({"error": "TV show ID, season, and episode are required"}), 400
+    info = await asyncio.to_thread(vidsrc.get_all_sources, tv_id, season=season, episode=episode)
     return jsonify(info)
 
 @app.route('/vsc/log')
