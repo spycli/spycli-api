@@ -29,9 +29,9 @@ class VidSrcClient:
 
     def get_all_sources(self, db_id, season=None, episode=None):
         if season is not None and episode is not None:
-            endpoint = f"/stream/{db_id}?s={season}&e={episode}"
+            endpoint = f"/streams/{db_id}?s={season}&e={episode}"
         else:
-            endpoint = f"/stream/{db_id}"
+            endpoint = f"/streams/{db_id}"
         return self._send_request(endpoint)
     
     def get_subtitles(self, subtitle_url):
