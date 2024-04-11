@@ -88,10 +88,10 @@ class MoviesDrive:
                         mdrive_id = href.replace("https://ww1.mdrive.social/archives/", "")
                         text = a_tag.get_text(strip=True)
                         qualities_dict[text] = mdrive_id
-            if qualities_dict:  # Ensure there is data before creating the return object
+            if qualities_dict:
                 return {'type': 'movie', 'data': qualities_dict}
             else:
-                return "No data found."
+                return {}
         except Exception as e:
             return {"success": False, "error": str(e)}
 
@@ -102,7 +102,7 @@ class MoviesDrive:
             if response is None:
                 return "Failed to retrieve data."
             soup = BeautifulSoup(response.content, 'html.parser')
-            all_data = {}  # Initialize as a dictionary
+            all_data = {}
             h5_tags = soup.find_all('h5', style="text-align: center;")
             for h5 in h5_tags:
                 red_span = h5.find('span', style="color: #ff0000;")
@@ -122,7 +122,7 @@ class MoviesDrive:
             if all_data: 
                 return {'type': 'series', 'data': all_data}
             else:
-                return "No data found."
+                return {}
         except Exception as e:
             return {"success": False, "error": str(e)}
 
