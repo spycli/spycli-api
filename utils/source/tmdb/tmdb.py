@@ -30,13 +30,16 @@ class TMDbFetcher:
             data = response.json()
             seasons_data = data.get('seasons', [])
             seasons_episode_structure = {}
-            season_number = 1
+            season_number = 1  # Initialize a counter to track season numbers
             for season in seasons_data:
                 if season['name'].lower() != 'specials' and season['episode_count'] > 0:
-                    season_name = f"Season {season_number}"
+                    if season['name'] in [f'Season {i}' for i in range(1, 100)]:
+                        season_name = season['name']  # Use the API provided name if it is standard
+                    else:
+                        season_name = f"Season {season_number} ({season['name']})"  # Format non-standard names
                     episodes = [f'Episode {i+1}' for i in range(season['episode_count'])]
                     seasons_episode_structure[season_name] = episodes
-                    season_number += 1
+                    season_number += 1  # Increment the counter for each valid season
             return seasons_episode_structure, tmdb_id
         else:
             raise Exception(f"Failed to fetch data: {response.status_code}")
