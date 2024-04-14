@@ -187,7 +187,7 @@ async def dramacool_info():
 async def dramacool_streaming():
     episode_id = request.args.get('episodeId')
     media_id = request.args.get('mediaId')
-    server = request.args.get('server', default="asianload")
+    server = request.args.get('server')
     if not episode_id or not media_id:
         return jsonify({"error": "Missing episodeId or mediaId parameter"}), 400
     links = await asyncio.to_thread(drama_cool.get_streaming_links, episode_id, media_id, server)
