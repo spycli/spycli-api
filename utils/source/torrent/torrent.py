@@ -14,10 +14,10 @@ class TorrentClient:
             print(f"Error: Received status code {response.status_code}")
             return None
 
-    def search_on_site(self, site, query, limit=None, page=1):
+    def search_on_site(self, site, query, page=1, limit_item=None):
         """Search for torrents on a specific site."""
         endpoint = "/api/v1/search"
-        params = {'site': site, 'query': query, 'limit': limit, 'page': page}
+        params = {'site': site, 'query': query, 'limit': limit_item, 'page': page}
         return self._send_request(endpoint, params=params)
 
     def search_all_sites(self, query, limit=None):

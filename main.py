@@ -136,11 +136,12 @@ async def torrent_search_all():
 @app.route('/torrent/search/site', methods=['GET'])
 async def torrent_search_site():
     search_query = request.args.get('query', default='', type=str)
-    limit = request.args.get('limit', default=2, type=int)
+    limit_item = request.args.get('limit', default=2, type=int)
     site = request.args.get('site', default=None, type=str)
+    page = request.args.get('page', default=1, type=int)
     if not site:
         return jsonify({"error": "The 'site' parameter is required."}), 400
-    info = await asyncio.to_thread(torrent.search_on_site, site, search_query, limit=limit)
+    info = await asyncio.to_thread(torrent.search_on_site, site, search_query, page, limit_item )
     return jsonify(info)
 
 @app.route('/torrent/log')
