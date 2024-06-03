@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup
 import json
 import asyncio
 from playwright.async_api import async_playwright
-
+import re
 
 class MoviesDrive:
     def __init__(self): 
-        self.base_url = 'https://moviesdrive.asia/'
+        self.base_url = 'https://moviesdrive.space/'
         
     def send_request(self, url):
         try:
@@ -17,7 +17,7 @@ class MoviesDrive:
         except requests.exceptions.RequestException as e:
             print(f"Request failed: {e}")
             return None
-
+        
     def search(self, query):
         try:
             movies_list = []
@@ -30,7 +30,8 @@ class MoviesDrive:
                 for element in elements:
                     a_tag = element.find('a')
                     href = a_tag.get('href', 'No href attribute') if a_tag else 'No <a> tag'
-                    format_href = href.replace(self.base_url, '').replace('/', '')
+                    format_href = re.sub(r'https:\/\/moviesdrive\.[^\/]+\/', '', href).replace("/","")
+                    #format_href = href.replace(self.base_url, '').replace('/', '')
                     img_tag = element.find('img')
                     if img_tag:
                         img_src = img_tag.get('src', 'No src attribute')
