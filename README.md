@@ -26,7 +26,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) f
 
 ## Support
 
-```Author: JuniorAlive``` ```Discord: junioralive``` [```Discord Server```](https://discord.gg/g7wDtnBKEb) [```Project Link```](https://github.com/junioralive/spy-cli) [issue](https://github.com/spycli/spycli-api/issues/new)
+```Author: JuniorAlive``` ```Discord: junioralive``` [```Discord Server```](https://discord.gg/g7wDtnBKEb) [issue](https://github.com/spycli/spycli-api/issues/new)
 
 ## SPECIAL CREDITS
 
