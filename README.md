@@ -9,17 +9,16 @@ Our API offers access to multiple categories:
 - **Anime API**
 - **Kdrama API**
 - **Cdráma API**
-- **Torrent API**:
+- **Torrent API**
 - **VidScr API**
 
 ### Accessing the API
 
-1. Open the Google Colab link: [Google Colab Link](#)
-2. Follow the instructions on the notebook to authenticate and start using the API.
+To access our API, please visit [spycli-collab](https://github.com/spycli/spycli-collab) for detailed documentation.
 
 ## Contributing
 
-We welcome contributions from the community. If you have suggestions or improvements, please fork the repository and submit a pull request.
+We welcome contributions from the community. If you have suggestions or improvements, please fork the repository and submit a [pull request](https://github.com/spycli/spycli-api/pulls).
 
 ## License
 
