@@ -16,7 +16,9 @@ Our API offers access to multiple categories:
 
 ### Accessing the API
 
-To access our API, please visit [spycli-collab](https://github.com/spycli/spycli-collab) for detailed documentation.
+Can't figure out how to host? Don't understand all this? It's okay, we've got you covered. We have found an easy way for you to access our API. Please visit [SPY-CLI Collab](https://github.com/spycli/spycli-collab) for detailed documentation.
+
+A local hosting script will be coming soon. In the meantime, we recommend using the Collab version
 
 ## Contributing
 
