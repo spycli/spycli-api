@@ -1,16 +1,18 @@
 # SPY-CLI API
 
-Welcome to the SPY-CLI API, Our API provides a unified interface to a rich variety of entertainment data, including movies, anime, K-dramas, C-dramas, torrents, and more. Dive into a world of endless possibilities with enhanced access to entertainment and information through our easy-to-use endpoints.
+Welcome to the SPY-CLI API, Our goal is to connect multiple APIs to one master API that can be easily hosted and used with just a few clicks, Our API provides a unified interface to a rich variety, including movies, tv shows, anime, K-dramas, C-dramas, torrents, and much more to come. Dive into a world of endless possibilities with enhanced access to entertainment and information through our easy-to-use endpoints. 
 
 ## FEATURES
 
 Our API offers access to multiple categories:
+
 - **Movies API**
 - **Anime API**
 - **Kdrama API**
 - **Cdráma API**
 - **Torrent API**
 - **VidScr API**
+- **MUCH MORE COMING SOON...**
 
 ### Accessing the API
 
